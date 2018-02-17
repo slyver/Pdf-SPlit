@@ -127,7 +127,7 @@ router.post('/', uploading, function (req, res) {
   
   var formatted = now.format('d-m-Y H:M:S');
   
-  var new_dir = path.join('./splitted', formatted); 
+  var new_dir = path.join('../splitted', formatted); 
   
   fs.mkdirSync(new_dir);
   
