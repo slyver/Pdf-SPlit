@@ -11,6 +11,8 @@ var upload = require('./routes/upload');
 var split_pdf = require('./routes/split');
 var send = require('./routes/send');
 
+var cf_list;
+
 var app = express();
 
 // view engine setup
