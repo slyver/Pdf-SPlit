@@ -9,6 +9,7 @@ var routes = require('./routes/index');
 var users = require('./routes/users');
 var upload = require('./routes/upload');
 var split_pdf = require('./routes/split');
+var send = require('./routes/send');
 
 var app = express();
 
@@ -41,7 +42,7 @@ app.use('/upload',upload);
 app.use('/split', split_pdf);
 
 // -> end
-//app.use('/send', send);
+app.use('/send', send);
 
 
 
