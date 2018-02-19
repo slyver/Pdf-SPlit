@@ -23,8 +23,27 @@ app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
 
+
+
+
+////////////////////////////////////////////////////////////////////////////////
+// ROUTES
+////////////////////////////////////////////////////////////////////////////////
+
+// -> upload-form
 app.use('/', routes);
-app.use('/upload',upload)
+
+// -> split-form
+app.use('/upload',upload);
+
+// -> send-form
+app.use('/split', split_pdf);
+
+// -> end
+//app.use('/send', send);
+
+
+
 
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
