@@ -31,6 +31,7 @@ router.get('/', function (req, res) {
      res.sendFile( path.resolve('./views/send.html') );
     
      console.log('well done Silvio');
+      console.log(cf_list);
    });  
 });
 
