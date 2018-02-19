@@ -61,51 +61,51 @@ function query_and_send(cf_arr, dir_path, callback){
           callback(not_sent_to, sent_to);
           
         });  
-        
-      }
-        
-    });
-    
+      } 
+    }); 
   }
-  
-  
 }
 
-
-query_and_send(cf_arr, new_dir, function (not_sent_to, sent_to){
-      
-      if ( !(not_sent_to == '') ){
-        
-        var new_file = './sent-and-unsent/' + formatted + '.txt';
-        
-        var not_sent_to_arr = not_sent_to.split(',');
-        
-          not_sent_to_arr.pop();
-          
-        var sent_to_arr = sent_to.split(',');
-        
-          sent_to_arr.pop();
-          
-          var result = '';
-          
-          for (var unsent in not_sent_to_arr) 
-            
-            result += 'unsent: ' + not_sent_to_arr[unsent] + '\n';
-          
-          for (var sent in sent_to_arr)
-            
-            result += 'sent: ' + sent_to_arr[sent] + '\n';
-        
-        fs.writeFileSync(new_file, result);
-               
-        res.write('\n Risultato: \n' + result);
-        
-      }
-      
-      res.end('Invio tramite Mail Completato');
-      
-    });
-    
-  });
-  
 router.get('/', function (req, res) {
+
+   query_and_send(cf_arr, new_dir, function (not_sent_to, sent_to){
+           
+      var new_file = './sent-and-unsent/' + formatted + '.txt';
+           
+      var not_sent_to_arr = not_sent_to.split(',');
+           
+      var sent_to_arr = sent_to.split(',');
+
+      var result = '';
+
+     
+
+      not_sent_to_arr.pop();
+             
+      sent_to_arr.pop();
+             
+     
+
+      for (var unsent in not_sent_to_arr) 
+               
+         result += 'unsent: ' + not_sent_to_arr[unsent] + '\n';
+             
+     
+
+      for (var sent in sent_to_arr)
+               
+         result += 'sent: ' + sent_to_arr[sent] + '\n';
+           
+           
+
+      fs.writeFileSync(new_file, result);
+                  
+      res.write('\n Risultato: \n' + result);
+         
+      res.end('Invio tramite Mail Completato');
+         
+  });
+       
+});
+  
+
