@@ -68,6 +68,8 @@ function query_and_send(cf_arr, dir_path, callback){
 
 router.get('/', function (req, res) {
 
+   if (!global.cf_arr) global.cf_arr = require('cf_arr');
+
    query_and_send(cf_arr, new_dir, function (not_sent_to, sent_to){
            
       var new_file = './sent-and-unsent/' + formatted + '.txt';
