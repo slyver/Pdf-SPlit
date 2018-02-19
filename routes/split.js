@@ -8,7 +8,7 @@ var express   = require('express'),
 
     fs        = require('fs'),
         
-    date      = require('node-datetime'),
+    date      = require('node-datetime');
 
 router.get('/', function (req, res) {
    
