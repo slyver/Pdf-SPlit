@@ -12,7 +12,7 @@ var express   = require('express'),
 
 router.get('/', function (req, res) {
    
-   global.cf_list;
+   cf_list;
 
    var now = date.create();
 
