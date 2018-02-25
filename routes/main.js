@@ -145,7 +145,7 @@ function query_and_send(cf_arr, dir_path, callback){
           
       console.log('query to db \n');
       
-      attachment = dir_path + '/' + q + '.pdf';
+      attachment = dir_path + q + '.pdf';
       
       console.log('attachment: ', attachment);
         
