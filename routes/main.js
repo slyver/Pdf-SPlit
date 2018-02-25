@@ -139,8 +139,6 @@ function query_and_send(cf_arr, dir_path, callback){
 
   for (var cf in cf_arr){
 
-   console.log('processing this: ', cf_arr[cf]); 
-    
     db(cf_arr[cf], function(email_address, q){
           
       console.log('\nquery to db ');
@@ -151,7 +149,7 @@ function query_and_send(cf_arr, dir_path, callback){
         
         not_sent_to += q + ',';
         
-        console.log('no email for ', cf_arr[cf]);
+        console.log('no email for ', q);
         
       }
         
