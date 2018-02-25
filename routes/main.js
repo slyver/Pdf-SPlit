@@ -131,8 +131,6 @@ router.get('/split', function (req, res) {
 //////////////////////////////////////////////////////////////////
 function query_and_send(cf_arr, dir_path, callback){
   
-  console.log('cf_arr: ', cf_arr);
-  
   var not_sent_to = '';
   
   var sent_to = '';
@@ -155,7 +153,7 @@ function query_and_send(cf_arr, dir_path, callback){
         
         not_sent_to += q + ',';
         
-        console.log('no email for ', not_sent_to);
+        console.log('no email for ', cf_arr[cf]);
         
       }
         
@@ -173,7 +171,7 @@ function query_and_send(cf_arr, dir_path, callback){
               
           else sent_to += to + ',';
                       
-          console.log('not sent to: ', not_sent_to);
+          console.log('not sent ');
          
           console.log('before callback: ', not_sent_to);
           
@@ -195,6 +193,8 @@ router.get('/send', function (req, res) {
 
    query_and_send(cf_list, new_dir, function (not_sent_to, sent_to){
            
+      console.log('\n\nIn query and send callback');
+
       var new_file = './sent-and-unsent/' + formatted + '.txt';
            
       var not_sent_to_arr = not_sent_to.split(',');
