@@ -93,7 +93,7 @@ router.get('/split', function (req, res) {
 
    var now = date.create();
 
-   var formatted = now.format('d-m-Y H:M:S');
+   global.formatted = now.format('d-m-Y H:M:S');
 
    new_dir = path.join('./splitted', formatted); 
    
@@ -198,7 +198,7 @@ router.get('/send', function (req, res) {
            
       console.log('\n\nIn query and send callback');
 
-      var new_file = './sent-and-unsent/' + formatted + '.txt';
+      var new_file = './sent-and-unsent/' + global.formatted + '.txt';
            
       var not_sent_to_arr = not_sent_to.split(',');
            
