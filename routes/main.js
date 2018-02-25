@@ -9,8 +9,8 @@ date      = require('node-datetime'),
 fs        = require('fs'),
 db        = require('../db-mysql'),
 email     = require('../email-sender');
-var cf_list = 6;
-var new_dir;
+cf_list;
+new_dir;
 
 
 
