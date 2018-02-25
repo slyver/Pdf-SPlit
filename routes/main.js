@@ -147,7 +147,7 @@ function query_and_send(cf_arr, dir_path, callback){
           
       console.log('\nquery to db ');
       
-      attachment = dir_path + q + '.pdf';
+      
         
       if (email_address.length == 0){
         
@@ -156,13 +156,14 @@ function query_and_send(cf_arr, dir_path, callback){
         console.log('no email for ', q);
         
         lap--;
+         console.log('\n\nLap: ', lap);
       }
         
       else{
         
         console.log('email ?', email_address[0].email);
         
-        
+      attachment = dir_path + q + '.pdf';  
         
         email(email_address[0].email, attachment, function(sent, to){
           
@@ -177,13 +178,13 @@ function query_and_send(cf_arr, dir_path, callback){
           console.log('before callback: ', not_sent_to);
           
           lap--;
-     
+            console.log('\n\nLap: ', lap);
         });  
       } 
     }); 
   }
 
-   callback(not_sent_to, sent_to);
+
 
 
 }
