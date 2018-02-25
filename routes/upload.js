@@ -59,10 +59,9 @@ var uploading = multer({
 ////////////////////////////////////////////////////////////////////////////////
 // ROUTING UPLOAD FILE REQUEST
 ////////////////////////////////////////////////////////////////////////////////
-
 router.post('/', uploading, function (req, res) {
   
-res.sendFile( path.resolve('./views/split.html')  );
+   res.sendFile( path.resolve('./views/split.html')  );
 
 });
 

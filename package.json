@@ -20,6 +20,7 @@
     "mysql": "^2.5.4",
     "nodemailer":"^4.4.1",
     "nodemailer-smtp-transport":"^2.7.4",
-    "node-datetime": "^1.0.0"
+    "node-datetime": "^1.0.0",
+    "express-session": "^1.7.6"
   }
 }

@@ -1,19 +1,22 @@
-var express = require('express');
-var path = require('path');
-var favicon = require('serve-favicon');
-var logger = require('morgan');
+var express      = require('express');
+var path         = require('path');
+var favicon      = require('serve-favicon');
+var logger       = require('morgan');
 var cookieParser = require('cookie-parser');
-var bodyParser = require('body-parser');
+var bodyParser   = require('body-parser');
+var session      = require('express-session');
 
-var routes = require('./routes/index');
-var users = require('./routes/users');
-var upload = require('./routes/upload');
+var main      = require('./routes/main');
+var routes    = require('./routes/index');
+var users     = require('./routes/users');
+var upload    = require('./routes/upload');
 var split_pdf = require('./routes/split');
-var send = require('./routes/send');
+var send      = require('./routes/send');
 
 var cf_list;
 
 var app = express();
+
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -22,11 +25,11 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
+app.use(session({secret: 'ssshhhhh'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
 app.use(express.static(path.join(__dirname, 'public')));
-
 
 
 
@@ -35,16 +38,16 @@ app.use(express.static(path.join(__dirname, 'public')));
 ////////////////////////////////////////////////////////////////////////////////
 
 // -> upload-form
-app.use('/', routes);
+app.use('/', main);
 
 // -> split-form
-app.use('/upload',upload);
+//app.use('/upload',upload);
 
 // -> send-form
-app.use('/split', split_pdf);
+//app.use('/split', split_pdf);
 
 // -> end
-app.use('/send', send);
+//app.use('/send', send);
 
 
 
