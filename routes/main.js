@@ -10,7 +10,7 @@ fs        = require('fs'),
 db        = require('../db-mysql'),
 email     = require('../email-sender'), 
 cf_list   ;
-
+new_dir   ;
 
 
 
@@ -90,14 +90,12 @@ router.post('/upload', uploading, function (req, res) {
 ////////////////////////////////////////////////////////////////////////////////
 
 router.get('/split', function (req, res) {
-   
-   cf_list;
 
    var now = date.create();
 
    var formatted = now.format('d-m-Y H:M:S');
 
-   var new_dir = path.join('./splitted', formatted); 
+   new_dir = path.join('./splitted', formatted); 
    
    new_dir = new_dir + '/';   
    
