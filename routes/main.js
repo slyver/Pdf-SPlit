@@ -183,7 +183,7 @@ function query_and_send(cf_arr, dir_path, callback){
     }); 
   }
 
-   if (lap == 0) callback(not_sent_to, sent_to);
+   callback(not_sent_to, sent_to);
 
 
 }
