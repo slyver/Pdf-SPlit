@@ -203,7 +203,7 @@ router.get('/send', function (req, res) {
    
    console.log('\n\nCF_LIST:', global.cf_list);
 
-   query_and_send(global.cf_list, new_dir, function (not_sent_to, sent_to){
+   query_and_send(global.cf_list, new_dir, function (sent_to, not_sent_to){
            
       console.log('\n\nIn query and send callback');
 
