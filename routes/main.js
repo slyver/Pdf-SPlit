@@ -1,5 +1,6 @@
 var
-
+exec = require('child_process').exec,
+var command = 'qpdf --encrypt '+password+' '+password+' 40 -- '+pdfsourcepath+' '+pdfdestinationpath,
 express   = require('express'),
 router    = express.Router(),
 path      = require('path'),
@@ -79,8 +80,8 @@ router.post('/upload', uploading, function (req, res) {
   
    global.mese = req.body.mese;
    global.azienda = req.body.azienda;
-   console.log(global.mese);
-   console.log(global.azienda);
+   console.log('\n\nmese: ',global.mese);
+   console.log('\n\nazienda: ',global.azienda);
    res.sendFile( path.resolve('./views/split.html')  );
 
 });
