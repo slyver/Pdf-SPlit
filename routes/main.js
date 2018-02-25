@@ -135,19 +135,15 @@ function query_and_send(cf_arr, dir_path, callback){
   
   var sent_to = '';
   
+
+
   for (var cf in cf_arr){
-    
-    console.log(cf_arr[cf] + '\n');
-    
-    
     
     db(cf_arr[cf], function(email_address, q){
           
-      console.log('query to db \n');
+      console.log('\nquery to db ');
       
       attachment = dir_path + q + '.pdf';
-      
-      console.log('attachment: ', attachment);
         
       if (email_address.length == 0){
         
