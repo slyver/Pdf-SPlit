@@ -141,6 +141,8 @@ function query_and_send(cf_arr, dir_path, callback){
 
   for (var cf in cf_arr){
 
+    console.log('\n\nLap: ', lap);
+
     db(cf_arr[cf], function(email_address, q){
           
       console.log('\nquery to db ');
@@ -181,7 +183,7 @@ function query_and_send(cf_arr, dir_path, callback){
     }); 
   }
 
-   while (lap /= 0) callback(not_sent_to, sent_to);
+   if (lap == 0) callback(not_sent_to, sent_to);
 
 
 }
