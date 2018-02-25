@@ -1,6 +1,6 @@
 var
-exec = require('child_process').exec,
-var command = 'qpdf --encrypt '+password+' '+password+' 40 -- '+pdfsourcepath+' '+pdfdestinationpath,
+//exec = require('child_process').exec,
+//var command = 'qpdf --encrypt '+password+' '+password+' 40 -- '+pdfsourcepath+' '+pdfdestinationpath,
 express   = require('express'),
 router    = express.Router(),
 path      = require('path'),
