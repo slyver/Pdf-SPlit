@@ -135,7 +135,7 @@ function query_and_send(cf_arr, dir_path, callback){
   
   var sent_to = '';
   
-
+  console.log('processing this: ', cf_arr);  
 
   for (var cf in cf_arr){
     
