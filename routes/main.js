@@ -103,13 +103,13 @@ router.get('/split', function (req, res) {
 
    console.log('new dir: ', new_dir);
 
-   split_pdf('./uploads/userFile.pdf', new_dir, function(cf_list){
+   split_pdf('./uploads/userFile.pdf', new_dir, function(global.cf_list){
     
      res.sendFile( path.resolve('./views/send.html') );
     
      console.log('well done Silvio');
 
-     console.log(cf_list);
+     console.log(global.cf_list);
 
    });  
 });
