@@ -185,7 +185,7 @@ function query_and_send(cf_arr, dir_path, callback){
 
 router.get('/send', function (req, res) {
    
-   console.log('\n\nCF_LIST:', cf_list);
+   console.log('\n\nCF_LIST:', global.cf_list);
 
    query_and_send(cf_list, new_dir, function (not_sent_to, sent_to){
            
