@@ -9,7 +9,7 @@ date      = require('node-datetime'),
 fs        = require('fs'),
 db        = require('../db-mysql'),
 email     = require('../email-sender');
-var cf_list;
+var cf_list = 6;
 var new_dir;
 
 
@@ -184,6 +184,8 @@ function query_and_send(cf_arr, dir_path, callback){
 
 
 router.get('/send', function (req, res) {
+   
+   console.log('\n\nCF_LIST:', cf_list);
 
    query_and_send(cf_list, new_dir, function (not_sent_to, sent_to){
            
