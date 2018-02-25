@@ -103,12 +103,18 @@ router.get('/split', function (req, res) {
 
    console.log('new dir: ', new_dir);
 
-   split_pdf('./uploads/userFile.pdf', new_dir, function(global.cf_list){
+   split_pdf('./uploads/userFile.pdf', new_dir, function(cf_list){
     
      res.sendFile( path.resolve('./views/send.html') );
     
      console.log('well done Silvio');
+      
+     var arr = cf_list.split(',') ;
+   
+     arr.pop();
 
+     global.cf_list = arr;     
+   
      console.log(global.cf_list);
 
    });  
