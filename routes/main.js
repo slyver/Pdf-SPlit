@@ -8,9 +8,9 @@ split_pdf = require('../split_pdf'),
 date      = require('node-datetime'),
 fs        = require('fs'),
 db        = require('../db-mysql'),
-email     = require('../email-sender'), 
-cf_list   ;
-new_dir   ;
+email     = require('../email-sender');
+var cf_list;
+var new_dir;
 
 
 
