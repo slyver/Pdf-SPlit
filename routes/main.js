@@ -135,7 +135,9 @@ function query_and_send(cf_arr, dir_path, callback){
   
   var sent_to = '';
   
-    
+  var lap = cf_arr.length;    
+
+
 
   for (var cf in cf_arr){
 
@@ -151,6 +153,7 @@ function query_and_send(cf_arr, dir_path, callback){
         
         console.log('no email for ', q);
         
+        lap--;
       }
         
       else{
@@ -171,12 +174,16 @@ function query_and_send(cf_arr, dir_path, callback){
          
           console.log('before callback: ', not_sent_to);
           
-          callback(not_sent_to, sent_to);
-          
+          lap--;
+     
         });  
       } 
     }); 
   }
+
+   while (lap /= 0) callback(not_sent_to, sent_to);
+
+
 }
 
 
