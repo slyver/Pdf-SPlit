@@ -1,18 +1,21 @@
 var
 //exec = require('child_process').exec,
 //var command = 'qpdf --encrypt '+password+' '+password+' 40 -- '+pdfsourcepath+' '+pdfdestinationpath,
-express   = require('express'),
-router    = express.Router(),
-path      = require('path'),
-multer    = require('multer'),
-split_pdf = require('../split_pdf'),
-date      = require('node-datetime'),
-fs        = require('fs'),
-db        = require('../db-mysql'),
-email     = require('../email-sender');
+express        = require('express'),
+router         = express.Router(),
+path           = require('path'),
+multer         = require('multer'),
+split_pdf      = require('../split_pdf'),
+date           = require('node-datetime'),
+fs             = require('fs'),
+db             = require('../db-mysql'),
+//email          = require('../email-sender'),
+nodemailer     = require('nodemailer'),
+smtpTransport  = require('nodemailer-smtp-transport');
 global.cf_list;
 global.new_dir;
-
+global.azienda;
+global.mese;
 
 
 ///////////////////////////////////////////////////////////////////
@@ -77,7 +80,8 @@ var uploading = multer({
 // ROUTING UPLOAD FILE REQUEST:
 
 router.post('/upload', uploading, function (req, res) {
-  
+   
+   global.mese =   req.body.mese;
 
    global.azienda = req.body.azienda;
 
@@ -252,3 +256,89 @@ router.get('/send', function (req, res) {
 });
 
 module.exports = router
+
+
+
+///////////////////////////////////////////////////////////////////
+// email-sender
+///////////////////////////////////////////////////////////////////
+function email(to, attachments, callback){
+
+   var filename = "Cedolini-"+global.azienda+"-"+global.mese+".pdf";
+var testo_mail = "L'azienda " + global.azienda +" le fornisce il cedolino del mese " + global.mese;
+
+
+  console.log('testo mail: ', testo_mail);
+
+  console.log('to: ', to);  
+  
+  console.log('attachments: ', attachments);
+  
+  var transporter = nodemailer.createTransport(
+    
+    smtpTransport(
+      
+      {
+        service: 'Gmail',
+        host: 'smtp.gmail.com',
+        port: 465,
+        auth: {
+          user: 'wdltest470@gmail.com',
+          pass: 'Naruto43!'
+        }
+      }
+      
+    )
+  );
+  
+  // verify connection configuration
+  transporter.verify(function(error, success) {
+
+    if (error) {
+      
+      console.log('transporter verify: ', error);
+
+    } else {
+
+      console.log('Server is ready to take our messages');
+    }
+
+    
+  });
+  
+  transporter.sendMail({
+    
+    from: 'wdltest470@gmail.com',
+    
+    subject:" Cedolini ",
+    
+    text: testo_mail,
+    
+    attachments:[
+    {
+      'filename':file_name,
+      'path': attachments
+    }
+    ],
+    
+    to: to
+    
+  }, function(error, info) {
+    
+    if (error) {
+      
+      callback(false, to);
+      
+      return console.log('transporter sendMail: ', error);
+      
+    }
+    
+    console.log('Message %s sent: %s', info.messageId, info.response);
+    
+    console.log("Mail sent successfully");
+    
+    callback(true, to);
+    
+  });
+  
+}
