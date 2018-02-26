@@ -1,11 +1,15 @@
+var date           = require('node-datetime'),
+var nodemailer     = require('nodemailer');
+var smtpTransport  = require('nodemailer-smtp-transport');
+var fs             = require("fs");
 
-var nodemailer = require('nodemailer');
+var now = date.create();
 
-var smtpTransport = require('nodemailer-smtp-transport');
-
-var fs = require("fs");
+var testo_mail = "L'azienda " + global.azienda +" le fornisce il cedolino del mese " + now.format('m-Y');
 
 module.exports = function(to, attachments, callback){
+
+  console.log('testo mail: ', testo_mail);
 
   console.log('to: ', to);  
   
@@ -49,7 +53,7 @@ module.exports = function(to, attachments, callback){
     
     subject:" Cedolini ",
     
-    text: "Studio Pantano le invia il cedolino per ill mese corrente",
+    text: testo_mail,
     
     attachments:[
     {

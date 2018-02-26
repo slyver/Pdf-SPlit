@@ -78,10 +78,11 @@ var uploading = multer({
 
 router.post('/upload', uploading, function (req, res) {
   
-   global.mese = req.body.mese;
+
    global.azienda = req.body.azienda;
-   console.log('\n\nmese: ',global.mese);
+
    console.log('\n\nazienda: ',global.azienda);
+
    res.sendFile( path.resolve('./views/split.html')  );
 
 });
