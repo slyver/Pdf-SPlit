@@ -7,13 +7,6 @@ var bodyParser   = require('body-parser');
 var session      = require('express-session');
 
 var main      = require('./routes/main');
-var routes    = require('./routes/index');
-var users     = require('./routes/users');
-var upload    = require('./routes/upload');
-var split_pdf = require('./routes/split');
-var send      = require('./routes/send');
-
-var cf_list;
 
 var app = express();
 
@@ -25,7 +18,6 @@ app.set('view engine', 'pug');
 // uncomment after placing your favicon in /public
 //app.use(favicon(path.join(__dirname, 'public', 'favicon.ico')));
 app.use(logger('dev'));
-app.use(session({secret: 'ssshhhhh'}));
 app.use(bodyParser.json());
 app.use(bodyParser.urlencoded({ extended: false }));
 app.use(cookieParser());
@@ -37,17 +29,9 @@ app.use(express.static(path.join(__dirname, 'public')));
 // ROUTES
 ////////////////////////////////////////////////////////////////////////////////
 
-// -> upload-form
 app.use('/', main);
 
-// -> split-form
-//app.use('/upload',upload);
 
-// -> send-form
-//app.use('/split', split_pdf);
-
-// -> end
-//app.use('/send', send);
 
 
 
