@@ -1,4 +1,4 @@
-var date           = require('node-datetime'),
+var date           = require('node-datetime');
 var nodemailer     = require('nodemailer');
 var smtpTransport  = require('nodemailer-smtp-transport');
 var fs             = require("fs");
