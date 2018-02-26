@@ -264,7 +264,7 @@ module.exports = router
 ///////////////////////////////////////////////////////////////////
 function email(to, attachments, callback){
 
-   var filename = "Cedolini-"+global.azienda+"-"+global.mese+".pdf";
+   var file_name = "Cedolini-"+global.azienda+"-"+global.mese+".pdf";
 var testo_mail = "L'azienda " + global.azienda +" le fornisce il cedolino del mese " + global.mese;
 
 
