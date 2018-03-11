@@ -22,19 +22,27 @@ module.exports = function (page){
   } 
     
   //check if the cf code found exists and is unique per page
-  var j = 0, unique = 0; 
+   var j = 0, unique = 0; 
   
   for (let j = 0; j < found.length; j++){
     
-    if (found[j].match(cf) !== null) unique++;
-  }
-  
-  if (unique == 1) return found[j];
-  
-  else{
-    console.log(err2);
-      return null;
-  } 
+     var infound = found[j].match(cf);
+      
+      if( infound != null ) unique = infound.length;
 }
+  
+  
+    
+
+  if (unique == 1) return infound[0];
+   
+  else if (unique == 0) console.log(err1);
+  
+  else console.log(err2);
+  
+  return null;
+   
+}
+
 
 
