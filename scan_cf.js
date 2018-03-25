@@ -2,8 +2,7 @@
 module.exports = function (page){
   
   //error messages
-  var err1 = "CF not found";
-  var err2 = "there're more than CF per page";
+  var err = "CF not found";
   
   //fast RegExp based on CF format
   var fast_cf = /[a-zA-Z]{6}[a-zA-Z0-9]{2}[a-zA-Z][a-zA-Z0-9]{2}[a-zA-Z][a-zA-Z0-9]{3}[a-zA-Z]/g;
@@ -21,28 +20,27 @@ module.exports = function (page){
     return null;
   } 
     
-  //check if the cf code found exists and is unique per page
-   var j = 0, unique = 0; 
   
-  for (let j = 0; j < found.length; j++){
+  //check if the cf code found exists and is unique per page
+   var j = 0;
+  
+  for (let j = 0; j < found.length; j++)
     
      var infound = found[j].match(cf);
-      
-      if( infound != null ) unique = infound.length;
-}
-  
-  
-    
 
-  if (unique == 1) return infound[0];
+
+  //set infound's index in order to choose which CF return
+  if( infound != null )   return infound[0];
    
-  else if (unique == 0) console.log(err1);
+  else{
+    
+    console.log(err);
   
-  else console.log(err2);
-  
-  return null;
-   
+    return null;
+  }
+
 }
+
 
 
 
